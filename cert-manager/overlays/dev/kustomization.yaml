@@ -1,0 +1,10 @@
+bases:
+  - ../../base
+
+images:
+  - name: quay.io/jetstack/cert-manager-cainjector
+    newName: dockerepo.hvl.io/tools/quay.io/jetstack/cert-manager-cainjector
+  - name: quay.io/jetstack/cert-manager-controller
+    newName: dockerepo.hvl.io/tools/quay.io/jetstack/cert-manager-controller
+  - name: quay.io/jetstack/cert-manager-webhook
+    newName: dockerepo.hvl.io/tools/quay.io/jetstack/cert-manager-webhook

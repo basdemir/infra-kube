@@ -1,0 +1,4 @@
+resources:
+  - kiali-1.10.yaml
+  - jaeger-1.10.yaml
+  - istiooperator.yaml

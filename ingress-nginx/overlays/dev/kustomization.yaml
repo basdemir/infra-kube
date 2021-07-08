@@ -1,0 +1,13 @@
+bases:
+  - ../../base
+
+patchesStrategicMerge:
+  - lb-patch.yaml
+
+images:
+  - name: k8s.gcr.io/ingress-nginx/controller
+    newName: dockerepo.hvl.io/tools/k8s.gcr.io/ingress-nginx/controller
+  - name: docker.io/jettech/kube-webhook-certgen
+    newName: dockerepo.hvl.io/tools/docker.io/jettech/kube-webhook-certgen
+  - name: docker.io/jettech/kube-webhook-certgen
+    newName: dockerepo.hvl.io/tools/docker.io/jettech/kube-webhook-certgen

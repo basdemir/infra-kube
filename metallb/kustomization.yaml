@@ -1,0 +1,4 @@
+resources:
+- overlays/nvitest
+- overlays/dev
+# namePrefix: cluster-a-

@@ -1,0 +1,29 @@
+bases:
+  - ../../base
+
+# patches:
+#   - replica_count.yaml
+#   - resource_limits.yaml
+
+configMapGenerator:
+- name: config
+  namespace: metallb-system
+  behavior: replace
+  files:
+    - configs/config
+
+patchesStrategicMerge:
+  - env.yaml
+  - replica_count.yaml
+  - resource_limits.yaml
+
+
+images:
+- name: quay.io/metallb/speaker
+  newName: dockerepo.hvl.io/tools/quay.io/metallb/speaker
+  # newTag: v0.10.2
+- name: quay.io/metallb/controller
+  newName: dockerepo.hvl.io/tools/quay.io/metallb/controller
+  # newTag: v0.10.2
+
+# namePrefix: pve-

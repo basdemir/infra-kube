@@ -1,0 +1,2 @@
+resources:
+  - ingress-nginx-0.47.yaml

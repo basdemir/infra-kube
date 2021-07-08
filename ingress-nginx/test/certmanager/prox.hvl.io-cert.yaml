@@ -1,0 +1,43 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: cert-manager-self
+---
+apiVersion: cert-manager.io/v1
+kind: Issuer
+metadata:
+  name: test-selfsigned
+  namespace: cert-manager-self
+spec:
+  selfSigned: {}
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: selfsigned-cert
+  namespace: cert-manager-self
+spec:
+  # Secret names are always required.
+  secretName: nginx-cert-tls
+  duration: 2160h # 90d
+  renewBefore: 360h # 15d
+  dnsNames:
+  - '*.prox.hvl.io'
+  issuerRef:
+    name: test-selfsigned
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: selfsigned-cert2
+  namespace: cert-manager-self
+spec:
+  # Secret names are always required.
+  secretName: nginx-cert-tls2
+  duration: 2160h # 90d
+  renewBefore: 360h # 15d
+  dnsNames:
+  - '*.a.hvl.io'
+  issuerRef:
+    name: test-selfsigned
