@@ -1,0 +1,10 @@
+namespace: local-vol
+
+resources:
+  - namespace.yaml
+  - provisioner_generated.yaml
+
+images:
+  - name: k8s.gcr.io/sig-storage/local-volume-provisioner
+    newName: dockerepo.hvl.io/tools/k8s.gcr.io/sig-storage/local-volume-provisioner
+
