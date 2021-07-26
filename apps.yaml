@@ -15,7 +15,7 @@ spec:
     path: cicd/cd/argocd/apps-deploys
   destination:
     server: https://kubernetes.default.svc
-    namespace: production
+    namespace: dev
   syncPolicy:
     automated:
       selfHeal: true
