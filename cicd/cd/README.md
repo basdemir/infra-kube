@@ -17,7 +17,14 @@
  sudo mv argocd-linux-amd64 /usr/local/bin/argocd
  sudo chmod +x /usr/local/bin/argocd
  ```
+```bash
+# adding zsh completion
 
+argocd completion zsh > _argocd
+mkdir ~/.oh-my-zsh/custom/plugins/argocd
+mv _argocd ~/.oh-my-zsh/custom/plugins/argocd
+# add argocd to pluging of .zshrc and run 'exec zsh'
+```
  ## Adding external cluster
 > Add the kubecontet name of any kubernetes masters insted of rancher server while using rancher like...
 
