@@ -8,5 +8,7 @@
  ## Get secret
  kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d && echo
 
+	kg secrets -n argocd argocd-initial-admin-secret -o json | jq -r .data.password | base64 -d && echo
+
  kubectl -n argocd port-forward service/argocd-server 8080:80
  ```

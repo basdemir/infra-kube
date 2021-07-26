@@ -1,0 +1,46 @@
+loki:
+  enabled: true
+  replicas: 2
+  persistence:
+    enabled: true
+    size: 5Gi
+  resources:
+    limits:
+      cpu: 500m
+      memory: 512Mi
+    requests:
+      cpu: 250m
+      memory: 256Mi  
+  config:
+    server:
+      http_listen_port: 3100
+    chunk_store_config:
+      max_look_back_period: 0s
+    table_manager:
+      retention_deletes_enabled: true
+      retention_period: 240h
+  tolerations:
+  - effect: NoSchedule
+    key: key1
+    operator: Equal
+    value: value1
+  - effect: NoExecute
+    key: key2
+    operator: Exists
+promtail:
+  enabled: true
+  tolerations:
+  - effect: NoSchedule
+    key: key1
+    operator: Equal
+    value: value1
+  - effect: NoExecute
+    key: key2
+    operator: Exists
+  resources:
+    limits:
+      cpu: 200m
+      memory: 256Mi
+    requests:
+      cpu: 100m
+      memory: 128Mi

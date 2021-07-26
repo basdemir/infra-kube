@@ -1,0 +1,45 @@
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+name: test
+#featureGates:
+#  EvenPodsSpread: true
+
+nodes:
+  - role: control-plane
+    extraPortMappings:
+      - containerPort: 32000
+        hostPort: 80
+        protocol: TCP
+#    kubeadmConfigPatches:
+#      - |
+#        kind: InitConfiguration
+#        nodeRegistration:
+#          kubeletExtraArgs:
+#            node-labels: "my-label=true"      
+#        kind: JoinConfiguration
+#        nodeRegistration:
+#          kubeletExtraArgs:
+#            system-reserved: memory=4Gi,cpu=2
+  - role: worker
+    kubeadmConfigPatches:
+      - |
+        kind: JoinConfiguration
+        nodeRegistration:
+          kubeletExtraArgs:
+            system-reserved: memory=8Gi,cpu=4
+  - role: worker
+    kubeadmConfigPatches:
+      - |
+        kind: JoinConfiguration
+        nodeRegistration:
+          kubeletExtraArgs:
+            system-reserved: memory=8Gi,cpu=2
+
+#  - role: worker
+#    kubeadmConfigPatches:
+#      - |
+#        kind: JoinConfiguration
+#        nodeRegistration:
+#          kubeletExtraArgs:
+#            system-reserved: memory=8Gi,cpu=2
+
