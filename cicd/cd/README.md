@@ -1,7 +1,5 @@
 # ARGOCD 
 
-
-
 ## Installation
 
 ```bash
@@ -25,11 +23,41 @@ mkdir ~/.oh-my-zsh/custom/plugins/argocd
 mv _argocd ~/.oh-my-zsh/custom/plugins/argocd
 # add argocd to pluging of .zshrc and run 'exec zsh'
 ```
- ## Adding external cluster
+## Deleting Resources
+> If a problem occurs while creating a resource delete the finalizer by 
+
+```bash
+# editing
+k edit applications.argoproj.io dev # or
+
+namespace="argocd" && cat <<EOF | curl -k -X PUT \  
+  127.0.0.1:8001/api/v1/namespaces/${namespace}/finalize \
+  -H "Content-Type: application/json" \
+  --data-binary @-
+{
+  "kind": "Namespace",
+  "apiVersion": "v1",
+  "metadata": {
+    "name": "${namespace}"
+  },
+  "spec": {
+    "finalizers": null
+  }
+}
+EOF
+```
+
+
+
+ ## Adding external cluster and repo
 > Add the kubecontet name of any kubernetes masters insted of rancher server while using rancher like...
 
 ```bash
+k -n argocd port-forward service/argocd-server 8080:80
+argocd --insecure login localhost:8080
 argocd cluster add high-phys-high-phys-01
+## Adding Repo
+argocd repo add https://github.com/basdemir/infra-kube.git --username basdemir
 ```
 > Also read https://gist.github.com/janeczku/b16154194f7f03f772645303af8e9f80
 
