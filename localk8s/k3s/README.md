@@ -10,7 +10,7 @@ sudo install k3sup /usr/local/bin/
 
 k3sup --help
 
-k3sup install --host k3s.ecospend.io --user <username> --ssh-key ~/.ssh/<user priv key> # or
+k3sup install --host <DNS NAME OF HOST> --user <username> --ssh-key ~/.ssh/<user priv key> # or
 
-k3sup install --host k3s.ecospend.io --user <username> --ssh-key ~/.ssh/<user priv key> --k3s-extra-args '--no-deploy traefik'
+k3sup install --host <DNS NAME OF HOST> --user <username> --ssh-key ~/.ssh/<user priv key> --k3s-extra-args '--no-deploy traefik'
 ```
