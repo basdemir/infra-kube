@@ -53,7 +53,7 @@ export KUBECONFIG="$(k3d kubeconfig write devcluster)"
 kubectl create deployment nginx --image=nginx
 kubectl create service clusterip nginx --tcp=80:80
 # create nginx-ing.yaml
-
+cat <<EOF | kubectl apply -f -
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -71,8 +71,33 @@ spec:
             name: nginx
             port:
               number: 80
+EOF
 # and apply
 
 ka nginx-ing.yaml
 curl localhost:9080/
 ```
+<!-- ```bash
+cat <<EOF | kubectl apply -f -
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: argocd
+  annotations:
+    # nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    # nginx.ingress.kubernetes.io/ssl-passthrough: "true"
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: argocd-server
+            port:
+              number: 80
+EOF
+
+``` -->

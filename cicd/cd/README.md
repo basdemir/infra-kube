@@ -61,6 +61,7 @@ k -n argocd port-forward service/argocd-server 8080:80
 argocd --insecure login localhost:8080
 argocd cluster add high-phys-high-phys-01
 ## Adding Repo
+# if using k3d ksys edit cm coredns-xxxx and replace forward . /etc/resolv.conf with your dns like:  forward . <dns-ip> and restart coredns-xxxx pod
 argocd repo add https://github.com/basdemir/infra-kube.git --username basdemir
 ```
 
