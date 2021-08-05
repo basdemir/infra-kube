@@ -1,0 +1,6 @@
+spec:
+  template:
+    spec:
+      dnsPolicy: ClusterFirst
+      imagePullSecrets:
+      - name: dockerhub
