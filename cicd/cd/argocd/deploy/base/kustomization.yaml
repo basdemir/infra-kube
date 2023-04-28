@@ -6,7 +6,7 @@ resources:
 # - github.com/argoproj/argo-cd/manifests/crds?ref=v2.0.5
 # - github.com/argoproj/argo-cd/manifests/cluster-rbac/?ref=v2.0.5
 # - github.com/argoproj/argo-cd/manifests/base?ref=v2.0.5
-- https://raw.githubusercontent.com/argoproj/argo-cd/v2.0.5/manifests/install.yaml
+- https://raw.githubusercontent.com/argoproj/argo-cd/v2.6.7/manifests/install.yaml
 # - https://raw.githubusercontent.com/argoproj/argo-cd/v2.0.5/manifests/namespace-install.yaml
 
 namespace: argocd
